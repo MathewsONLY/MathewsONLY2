@@ -1,40 +1,31 @@
-let palvra;
+let cor;
+let circuloX;
+let circuloY;
 
 function setup() {
   createCanvas(400, 400);
-  
-  palavra = palavraAleatoria();
-  
-
+  background(color(100, 0, 0));
+  cor = "color(random(0, 255), random(0, 255), random(0,255))";
+  circuloX = [0, 0, 0];
+  circuloY = [random(height), random(height), random(height)];
 }
-
- function palavraAleatoria(){
-     let palavras = ["Dangerous", "UwU", "ForU"]
-  return random(palavras);
- }
-
 function draw() {
-  background("Black");
-  fill("white");
-  textSize(64);
-  textAlign(CENTER, CENTER);
-  
-  function palavraParcial(minimo, maximo) {
-  let quantidade = map(mouseX, minimo , maximo, 1, palavra.length);
-  //console.log(quantidade);
-  let parcial = palavra.substring(0, quantidade);
-    return parcial;
+  fill(cor);
+
+  // console.log(circuloX length);
+  for (let contador in circuloX) {
+    console.log(contador);
+    circle(circuloX[contador], circuloY[contador], 50);
+    circuloX[contador] += random(0, 3);
+    circuloY[contador] += random(-3, 3);
+
+    if (circuloX[contador] >= width) {
+      circuloX[contador] = 0;
+      circuloY[contador] = random(height);
+    }
   }
-  
-  
-  
-  // mouseX, 0, width ==> 0, palavra.length
-  let parcial = palavraParcial(0, width);
-  text(parcial, 200, 200);
-  
 
-}
-
-function jogaresMelhoresQueEu(jogadres, times){
-  
+  if (mouseIsPressed) {
+    cor = color(random(0, 255), random(0, 255), random(0, 255), random(0, 100));
+  }
 }
