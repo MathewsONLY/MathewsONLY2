@@ -3,79 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Robôs e Tecnologia</title>
+    <title>Combate ao Racismo Corporativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #000000 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Robôs e Avanços da Tecnologia</h1>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="hero-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-12">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Combate ao Racismo nas Empresas</h1>
+                    <p class="text-xl mb-6">Informação, conscientização e ação para promover ambientes corporativos mais inclusivos e igualitários.</p>
+                    <button onclick="scrollToSection('sobre')" class="bg-white text-blue-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
+                        Saiba Mais <i class="fas fa-arrow-down ml-2"></i>
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Diversidade no trabalho" class="rounded-lg shadow-2xl max-w-full h-auto">
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section class="video-section">
-            <!-- Incorporando o vídeo do YouTube -->
-            <iframe width="560" height="315" 
-                    src="https://www.youtube.com/embed/K_MvuUW8PlQ" 
-                    frameborder="0" 
-                    allow="autoplay; encrypted-media" 
-                    allowfullscreen>
-            </iframe>
-            <p>Este vídeo oferece uma visão geral sobre robôs, suas aplicações e como estão transformando diversas indústrias. Assista para entender melhor o impacto da robótica em nosso cotidiano!</p>
-        </section>
-
-        <section id="intro" class="info-box">
-            <h2 class="highlight">O Futuro é Agora!</h2>
-            <p class="intro-text">Os robôs estão transformando o mundo em que vivemos. Desde a automação de fábricas até assistentes pessoais, a tecnologia está avançando a passos largos. Prepare-se para explorar as inovações que estão moldando nosso futuro!</p>
-        </section>
-
-        <section id="avancos" class="info-box">
-            <h2>Avanços Recentes</h2>
-            <p>Nos últimos anos, vimos inovações incríveis na robótica, como:</p>
-            <ul>
-                <li>Robôs autônomos para entrega de produtos.</li>
-                <li>Inteligência Artificial aplicada à robótica.</li>
-                <li>Robôs humanoides que interagem com humanos.</li>
-                <li>Robôs cirurgiões que realizam operações com precisão.</li>
-                <li>Veículos autônomos que estão mudando o transporte.</li>
-            </ul>
-        </section>
-
-        <section id="topicos">
-            <h2>Tópicos Interessantes</h2>
-            <p>Explore os seguintes tópicos para se aprofundar no mundo da robótica e da tecnologia:</p>
-
-            <div class="topic-category">
-                <h3>Robótica Geral</h3>
-                <p>Descubra as bases da robótica e como os robôs estão sendo utilizados em diversas indústrias.</p>
-                <ul>
-                    <li><a href="https://www.robots.com/" target="_blank">Robots.com</a> - Um portal abrangente sobre robôs e suas aplicações.</li>
-                    <li><a href="https://www.roboticsbusinessreview.com/" target="_blank">Robotics Business Review</a> - Notícias e análises sobre o mercado de robótica.</li>
-                </ul>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-blue-900 font-bold text-xl">RacismoZero</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#sobre" class="text-gray-700 hover:text-blue-900 transition duration-300">Sobre</a>
+                    <a href="#estatisticas" class="text-gray-700 hover:text-blue-900 transition duration-300">Estatísticas</a>
+                    <a href="#combater" class="text-gray-700 hover:text-blue-900 transition duration-300">Como Combater</a>
+                    <a href="#recursos" class="text-gray-700 hover:text-blue-900 transition duration-300">Recursos</a>
+                </div>
+                <button class="md:hidden text-gray-700" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-
-            <div class="topic-category">
-                <h3>Inteligência Artificial</h3>
-                <p>A inteligência artificial é uma parte fundamental da robótica moderna. Veja como ela está sendo aplicada.</p>
-                <ul>
-                    <li><a href="https://www.technologyreview.com/" target="_blank">MIT Technology Review</a> - Artigos sobre as últimas inovações em IA.</li>
-                    <li><a href="https://www.therobotreport.com/" target="_blank">The Robot Report</a> - Informações sobre IA e robótica.</li>
-                </ul>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden py-4 border-t" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="#sobre" class="text-gray-700 hover:text-blue-900 transition duration-300">Sobre</a>
+                    <a href="#estatisticas" class="text-gray-700 hover:text-blue-900 transition duration-300">Estatísticas</a>
+                    <a href="#combater" class="text-gray-700 hover:text-blue-900 transition duration-300">Como Combater</a>
+                    <a href="#recursos" class="text-gray-700 hover:text-blue-900 transition duration-300">Recursos</a>
+                </div>
             </div>
+        </div>
+    </nav>
 
-            <div class="topic-category">
-                <h3>Robôs em Ação</h3>
-                <p>Veja exemplos de robôs que estão mudando o mundo, desde assistentes pessoais até robôs industriais.</p>
-                <ul>
-                    <li><a href="https://www.irobot.com/" target="_blank">iRobot</a> - Conheça os robôs domésticos que facilitam a vida.</li>
-                    <li><a href="https://www.bostondynamics.com/" target="_blank">Boston Dynamics</a> - Robôs avançados que estão na vanguarda da tecnologia.</li>
-                </ul>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- About Section -->
+        <section id="sobre" class="mb-20 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">O Racismo no Ambiente Corporativo</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-exclamation-triangle text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">O que é Racismo Corporativo?</h3>
+                    </div>
+                    <p class="text-gray-700">O racismo corporativo se manifesta através de práticas discriminatórias, conscientes ou inconscientes, que limitam as oportunidades profissionais de pessoas negras e outras minorias étnicas. Isso inclui desde microagressões cotidianas até barreiras sistêmicas na contratação, promoção e remuneração.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-balance-scale text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Impactos na Sociedade</h3>
+                    </div>
+                    <p class="text-gray-700">O racismo nas empresas perpetua desigualdades sociais e econômicas, limitando o potencial de desenvolvimento de indivíduos e comunidades inteiras. Além dos danos psicológicos às vítimas, as empresas perdem talentos diversos e a capacidade de inovar com diferentes perspectivas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section id="estatisticas" class="mb-20 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Estatísticas Alarmantes</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="stat-card bg-white p-6 rounded-lg shadow-lg text-center">
+                    <div class="text-5xl font-bold text-blue-900 mb-3">56%</div>
+                    <p class="text-gray-700">dos profissionais negros já sofreram discriminação racial no ambiente de trabalho</p>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-lg shadow-lg text-center">
+                    <div class="text-5xl font-bold text-blue-900 mb-3">4x</div>
+                    <p class="text-gray-700">maior probabilidade de um profissional branco ocupar cargos de liderança</p>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-lg shadow-lg text-center">
+                    <div class="text-5xl font-bold text-blue-900 mb-3">30%</div>
+                    <p class="text-gray-700">diferença salarial entre profissionais negros e brancos com mesma qualificação</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Combat Section -->
+        <section id="combater" class="mb-20 fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Como Combater o Racismo nas Empresas</h2>
+            
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap border-b border-gray-200 mb-8">
+                <button class="tab-btn px-4 py-2 font-medium text-blue-900 border-b-2 border-blue-900" data-tab="empresas">Para Empresas</button>
+                <button class="tab-btn px-4 py-2 font-medium text-gray-500 hover:text-blue-900" data-tab="profissionais">Para Profissionais</button>
+                <button class="tab-btn px-4 py-2 font-medium text-gray-500 hover:text-blue-900" data-tab="sociedade">Para a Sociedade</button>
+            </div>
+            
+            <!-- Tab Contents -->
+            <div id="empresas" class="tab-content active">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-users-cog text-blue-900 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Políticas de Diversidade</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Implementar políticas claras de diversidade e inclusão com metas mensuráveis e responsabilização.</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Programas de recrutamento inclusivo</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Treinamentos obrigatórios sobre viés inconsciente</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Canais seguros para denúncias de discriminação</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-chart-line text-blue-900 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Métricas e Transparência</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Monitorar e divulgar dados sobre diversidade em todos os níveis hierárquicos.</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Relatórios anuais de diversidade</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Equidade salarial por raça/etnia</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Taxas de promoção comparativas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="profissionais" class="tab-content">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-user-shield text-blue-900 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Autoconhecimento e Empoderamento</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Reconhecer seu valor profissional e buscar ambientes que valorizem a diversidade.</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Documentar casos de discriminação</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Buscar redes de apoio profissionais</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Conhecer seus direitos trabalhistas</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-hands-helping text-blue-900 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Aliança e Apoio</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Profissionais não-negros têm papel fundamental no combate ao racismo corporativo.</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Questionar práticas discriminatórias</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Amplificar vozes de colegas negros</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Educar-se continuamente sobre racismo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="sociedade" class="tab-content">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-gavel text-blue-900 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Acompanhamento Legislativo</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Apoiar e fiscalizar políticas públicas que promovam igualdade racial no mercado de trabalho.</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Cotas raciais em concursos públicos</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Leis de incentivo à diversidade corporativa</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Fiscalização das leis antidiscriminatórias</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-shopping-bag text-blue-900 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Consumo Consciente</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Escolher apoiar empresas comprometidas com a diversidade racial e denunciar casos de racismo.</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Pesquisar políticas de diversidade</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Boicotar empresas com práticas racistas</li>
+                            <li><i class="fas fa-check-circle text-blue-900 mr-2"></i> Apoiar negócios de empreendedores negros</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="recursos" class="fade-in">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Recursos Úteis</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="https://www.geledes.org.br/" target="_blank" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4 group-hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-book text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold group-hover:text-blue-900 transition duration-300">Geledés</h3>
+                    </div>
+                    <p class="text-gray-700">Instituto da Mulher Negra com vasto material sobre direitos raciais no trabalho e na sociedade.</p>
+                    <div class="mt-4 text-blue-900 font-medium flex items-center">
+                        Acessar site <i class="fas fa-external-link-alt ml-2"></i>
+                    </div>
+                </a>
+                <a href="https://www.ipea.gov.br/" target="_blank" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4 group-hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-chart-pie text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold group-hover:text-blue-900 transition duration-300">IPEA</h3>
+                    </div>
+                    <p class="text-gray-700">Pesquisas e dados oficiais sobre desigualdade racial no mercado de trabalho brasileiro.</p>
+                    <div class="mt-4 text-blue-900 font-medium flex items-center">
+                        Acessar site <i class="fas fa-external-link-alt ml-2"></i>
+                    </div>
+                </a>
+                <a href="https://www.racialequitytools.org/" target="_blank" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4 group-hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-globe text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold group-hover:text-blue-900 transition duration-300">Racial Equity Tools</h3>
+                    </div>
+                    <p class="text-gray-700">Ferramentas e recursos para promover equidade racial em organizações (em inglês).</p>
+                    <div class="mt-4 text-blue-900 font-medium flex items-center">
+                        Acessar site <i class="fas fa-external-link-alt ml-2"></i>
+                    </div>
+                </a>
+                <a href="https://www.mpt.mp.br/" target="_blank" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4 group-hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-balance-scale text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold group-hover:text-blue-900 transition duration-300">MPT</h3>
+                    </div>
+                    <p class="text-gray-700">Ministério Público do Trabalho - denúncias e informações sobre discriminação no trabalho.</p>
+                    <div class="mt-4 text-blue-900 font-medium flex items-center">
+                        Acessar site <i class="fas fa-external-link-alt ml-2"></i>
+                    </div>
+                </a>
+                <a href="https://www.institutoodara.org.br/" target="_blank" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4 group-hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-heart text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold group-hover:text-blue-900 transition duration-300">Instituto Odara</h3>
+                    </div>
+                    <p class="text-gray-700">Organização que promove equidade racial com foco em mulheres negras.</p>
+                    <div class="mt-4 text-blue-900 font-medium flex items-center">
+                        Acessar site <i class="fas fa-external-link-alt ml-2"></i>
+                    </div>
+                </a>
+                <a href="https://www.blacklivesmatter.com/" target="_blank" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 group">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4 group-hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-fist-raised text-blue-900 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold group-hover:text-blue-900 transition duration-300">Black Lives Matter</h3>
+                    </div>
+                    <p class="text-gray-700">Movimento global contra o racismo e violência policial (em inglês).</p>
+                    <div class="mt-4 text-blue-900 font-medium flex items-center">
+                        Acessar site <i class="fas fa-external-link-alt ml-2"></i>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Robôs e Tecnologia. Todos os direitos reservados.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">RacismoZero</h3>
+                    <p class="text-gray-400">Informação e ação para combater o racismo no ambiente corporativo e construir um mercado de trabalho mais justo e igualitário.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#sobre" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
+                        <li><a href="#estatisticas" class="text-gray-400 hover:text-white transition duration-300">Estatísticas</a></li>
+                        <li><a href="#combater" class="text-gray-400 hover:text-white transition duration-300">Como Combater</a></li>
+                        <li><a href="#recursos" class="text-gray-400 hover:text-white transition duration-300">Recursos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Redes Sociais</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 text-2xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 text-2xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p class="text-gray-400 mt-4">Compartilhe essa causa e ajude a combater o racismo corporativo.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>© 2023 RacismoZero. Todos os direitos reservados.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-blue-900 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('text-blue-900', 'border-blue-900');
+                    btn.classList.add('text-gray-500');
+                });
+                
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('text-blue-900', 'border-blue-900');
+                button.classList.remove('text-gray-500');
+                
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Function for scroll to section (used in hero button)
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade in animation for sections when scrolling
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>
 
     <script src="script.js"></ script>
 </body>
